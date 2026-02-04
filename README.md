@@ -1,73 +1,41 @@
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.base.org/llms.txt
-> Use this file to discover all available pages before exploring further.
+# Permissionless Portfolio Margin (PPM) (/docs/risex/features/portfolio-margin)
 
-# Base
 
-> The #1 Ethereum Layer 2, incubated by Coinbase
 
-<div className="use-cases">
-  <div className="use-cases-links">
-    ### Payments
 
-    [Accept Payments](/base-account/guides/accept-payments)
-    [Understand Network Fees](/base-chain/network-information/network-fees)
-    [Integrate Base Accounts](/base-account/quickstart/web)
-  </div>
 
-  <div className="use-cases-links">
-    ### Apps
+import { Callout } from 'fumadocs-ui/components/callout';
 
-    [Create a Mini App](/mini-apps/quickstart/create-new-miniapp)
-    [Sponsor Transactions](/base-account/improve-ux/sponsor-gas/paymasters)
-    [Accept Recurring Payments](/base-account/guides/accept-recurring-payments)
-  </div>
+<Callout type="info">
+  **Status:** Coming soon
+</Callout>
 
-  <div className="use-cases-links">
-    ### Tokens
+## What is Permissionless Portfolio Margin?
 
-    [Launch a Token](/get-started/launch-token)
-    [Bridge from Solana](/base-chain/quickstart/base-solana-bridge)
-    [Bridge from Ethereum](/base-chain/quickstart/bridge-token)
-  </div>
-</div>
+Portfolio margin lets you use assets like ETH, wstETH, or any supported ERC20 token as collateral for perps trading. Your spot holdings and perp positions are unified into a single account with one health ratio.
 
-### Products
+<img alt="Portfolio Margin" src={__img0} />
 
-<CardGroup cols={4}>
-  <Card title="Base Chain" icon="link" href="/base-chain/quickstart/why-base">
-    Network, nodes, and infrastructure
-  </Card>
+***
 
-  <Card title="Base Account" icon="wallet" href="/base-account/overview/what-is-base-account">
-    Authentication, payments, Basenames
-  </Card>
+## Technical Details
 
-  <Card title="Mini Apps" icon="grid-2" href="/mini-apps/introduction/overview">
-    Build in-app social experiences
-  </Card>
+Portfolio margin is built on [RIP-1: Modular Sub-accounts](/docs/risex/rips/rip-1) and integrates with Morpho Lite for permissionless lending markets. For the full technical specification including architecture, health calculations, and liquidation mechanics, see [RIP-2: Permissionless Portfolio Margin](/docs/risex/rips/rip-2).
 
-  <Card title="Solana Bridge" icon="bridge" href="/base-chain/quickstart/base-solana-bridge">
-    Cross-chain asset transfers
-  </Card>
-</CardGroup>
+<img alt="PPM Architecture" src={__img1} placeholder="blur" />
 
-<div className="resources-section">
-  ### Resources
+***
 
-  <div className="resources-row">
-    <div>
-      <h4>Funding</h4>
-      <span className="resource-link"><Icon icon="trophy" size={14} /> <a href="https://www.builderscore.xyz/">Builder Rewards</a></span>
-      <span className="resource-link"><Icon icon="hand-holding-dollar" size={14} /> <a href="https://paragraph.com/@grants.base.eth/calling-based-builders">Grants</a></span>
-      <span className="resource-link"><Icon icon="rocket" size={14} /> <a href="https://www.basebatches.xyz/">Base Batches</a></span>
-      <span className="resource-link"><Icon icon="clock-rotate-left" size={14} /> <a href="https://atlas.optimism.io/">Retroactive Funding</a></span>
-    </div>
+## Key Features
 
-    <div>
-      <h4>Growth</h4>
-      <span className="resource-link"><Icon icon="globe" size={14} /> <a href="https://github.com/base/web?tab=readme-ov-file#updating-the-base-ecosystem-page">Join the Base Ecosystem</a></span>
-      <span className="resource-link"><Icon icon="user-group" size={14} /> <a href="/get-started/base-mentorship-program">Find a Base Mentor</a></span>
-    </div>
-  </div>
-</div>
+### Leverage Any ERC-20
+
+Use any token as collateral for perps trading. As long as there's a Morpho market for it on RISE, you can leverage it.
+
+### Permissionless Collateral Listing
+
+New collateral types can be added without governance approval or whitelisting. Anyone can create a Morpho market, and once it meets liquidity thresholds, it becomes available for portfolio margin. The market decides what's valuable collateral.
+
+### Secure by Design
+
+Risk is isolated between RISEx and Morpho through composability. The portfolio margin system coordinates between protocols without modifying either one; each maintains its own security model and liquidation logic.
